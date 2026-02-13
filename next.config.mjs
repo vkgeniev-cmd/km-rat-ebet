@@ -9,6 +9,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push({
+        'better-sqlite3': 'commonjs better-sqlite3',
+      });
+    }
+    return config;
+  },
 }
 
 // t.me/SentinelLinks
